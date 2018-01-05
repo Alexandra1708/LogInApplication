@@ -2,5 +2,13 @@
     <string name="app_name">LogIn Application</string>
     <string name ="registration">Registration</string>
     <string name ="username">Username&#8230;</string>
+    <string name ="password">Password&#8230;</string>
+    <string name ="confirm_password">Confirm password&#8230;</string>
+    <string name ="register">REGISTER</string>
+    <string name ="cancel">Cancel</string>
+    <string name ="login">Log In</string>
+    <string name ="create_account">CREATE ACCOUNT</string>
+    <string name ="new_account">No account yet? Create one.</string>
 
+    
 </resources>
