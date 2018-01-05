@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.alexandra.loginapplication.MainActivity"
     tools:layout_editor_absoluteX="8dp"
-    tools:layout_editor_absoluteY="2dp">
     android:clickable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    tools:layout_editor_absoluteY="2dp">
 
-    
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp"></LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"/>
 
         <EditText
             android:id="@+id/editTextUsername"
@@ -29,7 +26,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="61dp"
             android:ems="10"
-            android:hint="Username..."
+            android:hint="@string/username"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -40,7 +37,7 @@
             android:layout_alignTop="@+id/editTextUsername"
             android:layout_marginTop="80dp"
             android:ems="10"
-            android:hint="Password..."
+            android:hint="@string/password"
             android:inputType="textPassword" />
 
         <Button
@@ -51,7 +48,7 @@
             android:layout_alignTop="@+id/editTextPassword"
             android:layout_marginTop="72dp"
             android:onClick="onClick"
-            android:text="Log in" />
+            android:text="@string/login" />
 
         <Button
             android:id="@+id/buttonCancel"
@@ -61,7 +58,7 @@
             android:layout_alignBottom="@+id/buttonLogIn"
             android:layout_alignEnd="@+id/editTextPassword"
             android:onClick="onClick"
-            android:text="Cancel" />
+            android:text="@string/cancel" />
 
         <TextView
             android:id="@+id/textView4"
@@ -70,7 +67,7 @@
             android:layout_alignStart="@+id/buttonLogIn"
             android:layout_below="@+id/buttonLogIn"
             android:layout_marginTop="50dp"
-            android:text="No account yet? Create one."
+            android:text="@string/new_account"
             android:textSize="20sp" />
 
         <Button
@@ -81,6 +78,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="26dp"
             android:onClick="onClick"
-            android:text="CREATE ACCOUNT" />
+            android:text="@string/create_account" />
 
 </RelativeLayout>
