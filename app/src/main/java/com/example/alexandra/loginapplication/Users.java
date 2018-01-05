@@ -1,6 +1,5 @@
 package com.example.alexandra.loginapplication;
 
-
 public class Users {
     private int id;
     private String username;
