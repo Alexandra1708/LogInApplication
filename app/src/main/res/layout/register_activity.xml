@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewRegister"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
+            android:text="Registration"
+            android:textColor="@android:color/black"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editText_register_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="52dp"
+            android:ems="10"
+            android:hint="Username..."
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_register_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText_register_username"
+            android:layout_below="@+id/editText_register_username"
+            android:layout_marginTop="39dp"
+            android:ems="10"
+            android:hint="Password..."
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/editText_register_password_confirmation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editText_register_password"
+            android:layout_below="@+id/editText_register_password"
+            android:layout_marginTop="41dp"
+            android:ems="10"
+            android:hint="Confirm password..."
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_register_password_confirmation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="48dp"
+            android:text="REGISTER" />
+    </RelativeLayout>
+
+</LinearLayout>
