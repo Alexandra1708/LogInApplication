@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
+    }   //nu se intampla nimic cand apas pe view
 
 //    public void setupUI(View view) {
 //
