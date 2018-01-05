@@ -4,20 +4,16 @@
     android:id="@+id/viewRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="28dp"
-            android:text="Registration"
+            android:text="@string/registration"
             android:textColor="@android:color/black"
             android:textSize="30sp" />
 
@@ -25,11 +21,10 @@
             android:id="@+id/editText_register_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="start"
             android:layout_marginTop="52dp"
             android:ems="10"
-            android:hint="Username..."
+            android:hint="@string/username"
             android:inputType="textPersonName" />
 
         <EditText
@@ -62,6 +57,5 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="48dp"
             android:text="REGISTER" />
-    </RelativeLayout>
 
 </LinearLayout>
