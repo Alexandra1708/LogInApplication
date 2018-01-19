@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.util.Log;
 
 
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupUI(findViewById(R.id.view));
         buttonLogIn =  (Button) findViewById(R.id.buttonLogIn);
         buttonCancel = (Button) findViewById(R.id.buttonCancel);
 
@@ -53,25 +55,27 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static void hideKeyboard (Activity activity) {
+        Log.d("hideKeyboard","am intrat in functie");
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         View view = activity.getCurrentFocus();
         if (view == null) {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }   //nu se intampla nimic cand apas pe view
+    }
 
-//    public void setupUI(View view) {
-//
-//        if (!(view instanceof EditText)) {
-//            view.setOnTouchListener(new View.OnTouchListener() {
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    hideSoftKeyboard(MainActivity.this);
-//                    return false;
-//                }
-//            });
-//        }
+    public void setupUI(View view) {
 
+        if (view instanceof EditText == false) { // metoda cel putin ciudata de-a verifica daca un view este EditText
+            view.setOnTouchListener(new View.OnTouchListener() { // Daca este EditText atunci el va asculta atunci cand el este activ si se face touch
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideKeyboard(MainActivity.this);
+                    return false;
+                }
+            });
+        }
+
+    }
 
 public void onClick(View view){
     {
@@ -79,7 +83,7 @@ public void onClick(View view){
             case R.id.buttonLogIn:
                 EditText editTextUsername = (EditText) findViewById(R.id.editTextUsername);
                 EditText editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-                View view2=(View)findViewById(R.id.view);
+                View view2 = findViewById(R.id.view);
                 String username = editTextUsername.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
                 if (username.equals(sqLiteDatabase)&& password.equals(sqLiteDatabase))
@@ -91,7 +95,7 @@ public void onClick(View view){
                 EditText editTextPassword2 = (EditText) findViewById(R.id.editTextPassword);
                 editTextUsername2.setText(null);
                 editTextPassword2.setText(null);
-                View view3=(View)findViewById(R.id.view);
+                View view3= findViewById(R.id.view);
                 view3.setBackgroundResource(R.color.white);
                 break;
 
@@ -101,7 +105,7 @@ public void onClick(View view){
 
             }
 
-        };
+        }
 
     }
 
