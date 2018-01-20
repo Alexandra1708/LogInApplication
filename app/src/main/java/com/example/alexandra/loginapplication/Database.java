@@ -12,10 +12,10 @@ class Database extends SQLiteOpenHelper{
     private static final String DATABASE_NAME="users.db";
     private static final int DATABASE_VERSION =1;
 
-    private static final String TABLE_NAME="users_table";
-    private static final String ID = "user_id";
-    private static final String USERNAME="user_name";
-    private static final String PASSWORD="user_password";
+    public static final String TABLE_NAME="users_table";
+    public static final String ID = "user_id";
+    public static final String USERNAME="user_name";
+    public static final String PASSWORD="user_password";
 
     //query - create & drop
     private static final String CREATE_TABLE_QUERY =

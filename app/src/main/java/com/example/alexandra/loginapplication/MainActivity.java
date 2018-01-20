@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public static void hideKeyboard (Activity activity) {
         Log.d("hideKeyboard","am intrat in functie");
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -74,9 +73,9 @@ public void onClick(View view){
                 View view2 = findViewById(R.id.view);
                 String username = editTextUsername.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
-                if (username.equals(sqLiteDatabase)&& password.equals(sqLiteDatabase))
-                 view2.setBackgroundResource(R.color.green);
-                else view2.setBackgroundResource(R.color.red);
+//                if (username.equals(sqLiteDatabase)&& password.equals(sqLiteDatabase))
+//                 view2.setBackgroundResource(R.color.green);
+//                else view2.setBackgroundResource(R.color.red);
                 break;
             case R.id.buttonCancel:
                 EditText editTextUsername2 = (EditText) findViewById(R.id.editTextUsername);
