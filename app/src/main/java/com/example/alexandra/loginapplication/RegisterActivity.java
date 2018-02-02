@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.View;
 import android.widget.Button;
@@ -44,10 +45,18 @@ public class RegisterActivity extends AppCompatActivity   {
                 Database openHelper =new Database(RegisterActivity.this);
                 SQLiteDatabase database=openHelper.getWritableDatabase();
 
-                String UsernameText= String.valueOf(editTextUsername);
-                String PasswordText= String.valueOf(editTextPassword);
-                String PasswordConfirmationText= String.valueOf(editTextPasswordConfirmation);
-                if(UsernameText.length()>=5 && PasswordText.length()>=4 && PasswordText.equals(PasswordConfirmationText)) {
+//                String usernameText= String.valueOf(editTextUsername);
+//                String passwordText= String.valueOf(editTextPassword);
+//                String passwordConfirmationText= String.valueOf(editTextPasswordConfirmation);
+                String usernameText= editTextUsername.getText().toString();
+
+                String passwordText= editTextPassword.getText().toString();
+
+                String passwordConfirmationText= editTextPasswordConfirmation.getText().toString();
+
+
+                Log.d("registrationStrings","username = " + usernameText+ " passwordText = "+passwordText + " passwordConfirmationText = " + passwordConfirmationText);
+                if(usernameText.length()>=5 && passwordText.length()>=4 && passwordText.equals(passwordConfirmationText)) {
                     Database db = new Database(RegisterActivity.this);
                     User user = new User();
                     db.addUser(user);
@@ -57,21 +66,21 @@ public class RegisterActivity extends AppCompatActivity   {
                     alert.setCancelable(true);
                     alert.create().show();
                 }
-                if (PasswordConfirmationText.contentEquals(PasswordText) == false) {
+                if (passwordConfirmationText.contentEquals(passwordText) == false) {
                         AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
                         alert.setMessage("Your password confirmation is different!");
                         alert.setPositiveButton("OK", null);
                         alert.setCancelable(true);
                         alert.create().show();
                     }
-                if (UsernameText.length() < 5) {
+                if (usernameText.length() < 5) {
                         AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
                         alert.setMessage("Your username must have at least 5 characters!");
                         alert.setPositiveButton("OK", null);
                         alert.setCancelable(true);
                         alert.create().show();
                     }
-                if (PasswordText.length() < 4 && PasswordConfirmationText.length() < 4) {
+                if (passwordText.length() < 4 && passwordConfirmationText.length() < 4) {
                         AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
                         alert.setMessage("Your password must have at least 4 characters!");
                         alert.setPositiveButton("OK", null);
