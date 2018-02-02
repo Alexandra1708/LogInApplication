@@ -6,6 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
 import android.content.Context;
 import com.example.alexandra.loginapplication.User;
+import android.database.Cursor;
+import android.util.Log;
+
+import java.util.ArrayList;
 
 class Database extends SQLiteOpenHelper{
 
@@ -44,6 +48,9 @@ class Database extends SQLiteOpenHelper{
     public void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        System.out.println("addUser name = " + user.getUsername());
+        System.out.println("addUser pass = " + user.getPassword());
+
         ContentValues values = new ContentValues();
         values.put(USERNAME, user.getUsername());
         values.put(PASSWORD, user.getPassword());
@@ -52,4 +59,34 @@ class Database extends SQLiteOpenHelper{
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
+
+    public ArrayList<User> getAllUsers(String table) {
+
+        ArrayList<User> values = new ArrayList<User>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = " Select * from " + table + " ; ";
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery(sql, null);
+
+        } catch (Exception e) {
+            Log.d("getAllUsers","probleme cu getAllUsers = " + e);
+        }
+
+        if (cursor.moveToFirst()) {
+            do {
+                User user = new User();
+                user.setId(Integer.valueOf(cursor.getString(cursor.getColumnIndex("user_id"))));
+                user.setPassword(cursor.getString(cursor.getColumnIndex("user_password")));
+                user.setUsername(cursor.getString(cursor.getColumnIndex("user_name")));
+                values.add(user);
+            }while(cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return values;
+    }
+
 }

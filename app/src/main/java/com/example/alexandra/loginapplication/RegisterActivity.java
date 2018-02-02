@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 //import static android.R.attr.contextUri;
@@ -27,6 +29,8 @@ import java.util.Objects;
 public class RegisterActivity extends AppCompatActivity   {
 
     Database Database;
+    Database db = new Database(RegisterActivity.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,35 +41,43 @@ public class RegisterActivity extends AppCompatActivity   {
         final  Button buttonRegister = (Button) findViewById(R.id.button_register);
 
 
+        ArrayList<User> userListFromDatabase = db.getAllUsers(Database.TABLE_NAME);
+
+        for(int i = 0; i< userListFromDatabase.size(); i++) {
+
+            System.out.println("i = " + i);
+            System.out.println("id = " + userListFromDatabase.get(i).getId());
+            System.out.println("name = " + userListFromDatabase.get(i).getUsername());
+            System.out.println("pass = " + userListFromDatabase.get(i).getPassword());
+        }
+
+
         buttonRegister.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                Database openHelper =new Database(RegisterActivity.this);
-                SQLiteDatabase database=openHelper.getWritableDatabase();
-
-//                String usernameText= String.valueOf(editTextUsername);
-//                String passwordText= String.valueOf(editTextPassword);
-//                String passwordConfirmationText= String.valueOf(editTextPasswordConfirmation);
                 String usernameText= editTextUsername.getText().toString();
-
                 String passwordText= editTextPassword.getText().toString();
-
                 String passwordConfirmationText= editTextPasswordConfirmation.getText().toString();
 
-
                 Log.d("registrationStrings","username = " + usernameText+ " passwordText = "+passwordText + " passwordConfirmationText = " + passwordConfirmationText);
+
                 if(usernameText.length()>=5 && passwordText.length()>=4 && passwordText.equals(passwordConfirmationText)) {
-                    Database db = new Database(RegisterActivity.this);
                     User user = new User();
+                    user.setUsername(usernameText);
+                    user.setPassword(passwordText);
                     db.addUser(user);
+
                     AlertDialog.Builder alert= new AlertDialog.Builder(RegisterActivity.this);
                     alert.setMessage("The registration was successful!");
                     alert.setPositiveButton("OK", null);
                     alert.setCancelable(true);
                     alert.create().show();
+
+
                 }
+
                 if (passwordConfirmationText.contentEquals(passwordText) == false) {
                         AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
                         alert.setMessage("Your password confirmation is different!");
